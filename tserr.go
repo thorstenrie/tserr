@@ -33,3 +33,7 @@ func ErrNilPtr() error {
 func ErrNotExistent(f string) error {
 	return errorf(errNilFailed, f)
 }
+
+func ErrEmpty(f string) error {
+	return errorf(cannotBeEmpty, f)
+}
