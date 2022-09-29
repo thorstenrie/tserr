@@ -22,6 +22,18 @@ func Op(a *OpArgs, err error) error {
 	return errorf(opFailed, a.Op, a.Fn, err)
 }
 
+type TypeArgs struct {
+	act  string
+	want string
+}
+
+func TypeNotMatching(a *TypeArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(typeNotEqual, a.act, a.want)
+}
+
 func NilFailed(op string) error {
 	return errorf(errNilFailed, op)
 }
