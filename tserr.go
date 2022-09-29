@@ -8,8 +8,8 @@ func ErrChk(f string, err error) error {
 }
 
 type ErrOpArgs struct {
-	op string
-	f  string
+	Op string
+	Fn string
 }
 
 func ErrOp(a *ErrOpArgs, err error) error {
@@ -19,7 +19,7 @@ func ErrOp(a *ErrOpArgs, err error) error {
 	if a == nil {
 		return ErrNilPtr()
 	}
-	return errorf(opFailed, a.op, a.f, err)
+	return errorf(opFailed, a.Op, a.Fn, err)
 }
 
 func ErrTestNil(op string) error {
@@ -29,4 +29,3 @@ func ErrTestNil(op string) error {
 func ErrNilPtr() error {
 	return errorf(nilPtr)
 }
-
