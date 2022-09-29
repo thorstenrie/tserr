@@ -22,8 +22,8 @@ func ErrOp(a *ErrOpArgs, err error) error {
 	return errorf(opFailed, a.Op, a.Fn, err)
 }
 
-func ErrTestNil(op string) error {
-	return errorf(testNilFailed, op)
+func ErrNilFailed(op string) error {
+	return errorf(errNilFailed, op)
 }
 
 func ErrNilPtr() error {
