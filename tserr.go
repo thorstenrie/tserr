@@ -29,3 +29,7 @@ func ErrNilFailed(op string) error {
 func ErrNilPtr() error {
 	return errorf(nilPtr)
 }
+
+func ErrNotExistent(f string) error {
+	return errorf(errNilFailed, f)
+}
