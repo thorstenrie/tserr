@@ -7,12 +7,12 @@ func Check(f string, err error) error {
 	return errorf(chkFailed, f, err)
 }
 
-type ErrOpArgs struct {
+type OpArgs struct {
 	Op string
 	Fn string
 }
 
-func Op(a *ErrOpArgs, err error) error {
+func Op(a *OpArgs, err error) error {
 	if err == nil {
 		return nil
 	}
