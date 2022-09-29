@@ -23,15 +23,15 @@ func Op(a *OpArgs, err error) error {
 }
 
 type TypeArgs struct {
-	act  string
-	want string
+	Act  string
+	Want string
 }
 
 func TypeNotMatching(a *TypeArgs) error {
 	if a == nil {
 		return NilPtr()
 	}
-	return errorf(typeNotEqual, a.act, a.want)
+	return errorf(typeNotEqual, a.Act, a.Want)
 }
 
 func NilFailed(op string) error {
