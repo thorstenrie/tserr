@@ -1,25 +1,34 @@
 package tserr
 
-func Check(f string, err error) error {
-	if err == nil {
-		return nil
-	}
-	return errorf(chkFailed, f, err)
+type CheckArgs struct {
+	F   string
+	Err error
 }
 
-type OpArgs struct {
-	Op string
-	Fn string
-}
-
-func Op(a *OpArgs, err error) error {
-	if err == nil {
-		return nil
-	}
+func Check(a *CheckArgs) error {
 	if a == nil {
 		return NilPtr()
 	}
-	return errorf(opFailed, a.Op, a.Fn, err)
+	if a.Err == nil {
+		return nil
+	}
+	return errorf(chkFailed, a.F, a.Err)
+}
+
+type OpArgs struct {
+	Op  string
+	Fn  string
+	Err error
+}
+
+func Op(a *OpArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	if a.Err == nil {
+		return nil
+	}
+	return errorf(opFailed, a.Op, a.Fn, a.Err)
 }
 
 type TypeArgs struct {
@@ -50,6 +59,11 @@ func Empty(f string) error {
 	return errorf(cannotBeEmpty, f)
 }
 
-func NotEqualStr(a string, b string) error {
-	return errorf(strNotEqual, a, b)
+type TypeNotEqualStr struct {
+	X string
+	Y string
+}
+
+func NotEqualStr(a *TypeNotEqualStr) error {
+	return errorf(strNotEqual, a.X, a.Y)
 }
