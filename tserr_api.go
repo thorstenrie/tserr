@@ -12,7 +12,7 @@ func Check(a *CheckArgs) error {
 	if a.Err == nil {
 		return nil
 	}
-	return errorf(chkFailed, a.F, a.Err)
+	return errorf(&errmsgCheck, a.F, a.Err)
 }
 
 type OpArgs struct {
@@ -28,42 +28,41 @@ func Op(a *OpArgs) error {
 	if a.Err == nil {
 		return nil
 	}
-	return errorf(opFailed, a.Op, a.Fn, a.Err)
+	return errorf(&errmsgOp, a.Op, a.Fn, a.Err)
 }
 
-type TypeArgs struct {
+type TypeNotMatchingArgs struct {
 	Act  string
 	Want string
 }
 
-func TypeNotMatching(a *TypeArgs) error {
+func TypeNotMatching(a *TypeNotMatchingArgs) error {
 	if a == nil {
 		return NilPtr()
 	}
-	return errorf(typeNotEqual, a.Act, a.Want)
+	return errorf(&errmsgTypeNotMatching, a.Act, a.Want)
 }
 
 func NilFailed(op string) error {
-	return errorf(errNilFailed, op)
-}
-
-func NilPtr() error {
-	return errorf(nilPtr)
+	return errorf(&errmsgNilFailed, op)
 }
 
 func NotExistent(f string) error {
-	return errorf(errNilFailed, f)
+	return errorf(&errmsgNotExistent, f)
 }
 
 func Empty(f string) error {
-	return errorf(cannotBeEmpty, f)
+	return errorf(&errmsgEmpty, f)
 }
 
-type TypeNotEqualStr struct {
+type NotEqualStrArgs struct {
 	X string
 	Y string
 }
 
-func NotEqualStr(a *TypeNotEqualStr) error {
-	return errorf(strNotEqual, a.X, a.Y)
+func NotEqualStr(a *NotEqualStrArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgNotEqualStr, a.X, a.Y)
 }
