@@ -1,3 +1,5 @@
+// tserr_messages holds the error id, error code and error messages
+// with their potential verbs. 
 package tserr
 
 var (

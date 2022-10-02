@@ -1,3 +1,9 @@
+// tserr_api contains all exported error functions. If the function has one argument
+// it is directly provided as function argument. If the function has more than one
+// argument, then the arguments are provided as a struct, e.g., 
+//
+//     err := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "test1", Y: "test2"})
+//
 package tserr
 
 type CheckArgs struct {
