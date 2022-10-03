@@ -33,6 +33,7 @@ import "fmt"
 
 // Struct errmsg contains content of the error message.
 // - Id: consecutively numbered error id as integer; JSON element "id"
+//       NilPtr() always returns id 0.
 // - C: relating HTTP status code as integer; JSON element "code"
 // - M: error message as string, which may contain verbs; JSON element "message"
 type errmsg struct {

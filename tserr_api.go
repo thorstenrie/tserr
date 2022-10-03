@@ -1,10 +1,29 @@
-// tserr_api contains all exported error functions. If the function has one argument
-// it is directly provided as function argument. If the function has more than one
-// argument, then the arguments are provided as a struct, e.g., 
+package tserr
+
+// All exported error functions are found here, with the exception of NilPtr(), which exists
+// in a separate source file. If the function has one argument it is directly provided as
+// function argument. If the function has more than one argument, then the arguments are
+// provided as a struct, e.g.,
 //
 //     err := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "test1", Y: "test2"})
 //
-package tserr
+// All error functions first check, if the pointer to the argument struct is nil. If it is
+// nil, the error function returns NilPtr(), e.g., 
+//
+//     if a == nil {
+//	       return NilPtr()
+//     }
+//
+// If the argument struct contains a field of type error, is is checked next. If the error field is
+// nil, then the error function returns nil, e.g., 
+//
+//     if a.Err == nil {
+//         return nil
+//     }
+//
+// Otherwise, it returns the corresponding error message, e.g.,
+//
+//     return errorf(&errmsgNotEqualStr, a.X, a.Y)
 
 type CheckArgs struct {
 	F   string

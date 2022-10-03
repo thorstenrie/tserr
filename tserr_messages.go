@@ -1,7 +1,6 @@
-// tserr_messages holds the error id, error code and error messages
-// with their potential verbs. 
 package tserr
 
+// Error ids, error codes and error messagee with their potential verbs.
 var (
 	errmsgCheck           = errmsg{1, 412, "check %v failed: %w"}
 	errmsgNotExistent     = errmsg{2, 404, "%v does not exist"}
