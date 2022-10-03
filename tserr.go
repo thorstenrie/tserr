@@ -29,7 +29,7 @@
 package tserr
 
 // Import standard library packages
-import "fmt"
+import "fmt" // fmt
 
 // Struct errmsg contains content of the error message.
 // - Id: consecutively numbered error id as integer; JSON element "id"
