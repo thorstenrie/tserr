@@ -1,6 +1,6 @@
 package tserr
 
-// All exported error functions are implemented here, with the exception of NilPtr(), which exists
+// All exported error functions are implemented here, with the exception of NilPtr, which exists
 // in a separate source file. If the function has one argument it is directly provided as
 // function argument. If the function has more than one argument, then the arguments are
 // provided as a struct, e.g.,

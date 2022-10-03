@@ -1,7 +1,7 @@
-// The source file holds the NilPtr error function. Since it is self-used internally
-// in the package, it is provided in a separate source file.
 package tserr
 
+// NilPtr error function is self-used internally
+// in the package, so it is provided in this separate source file.
 // nilPtr error message is id 0 with error code 500 and a simple
 // error message without verbs.
 var (

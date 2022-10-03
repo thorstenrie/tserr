@@ -1,7 +1,7 @@
 // Package tserr provides a simple API for standardized error messages
 // in the JSON format.
 //
-// The tsyaml package provides easy-to-use functions to get standardized
+// The tserr package provides easy-to-use functions to get standardized
 // error messages for typical errors. The error messages are fomatted in
 // the JSON format:
 //
@@ -24,6 +24,7 @@
 //     {"error":{"id":6,"code":500,"message":"test1 does not equal test2"}}
 //
 // Copyright (c) 2022 thorstenrie
+//
 // All Rights Reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package tserr
