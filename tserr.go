@@ -15,7 +15,8 @@
 // arguments for the verbs are provided as function arguments. A function
 // may hold one argument used as one verb in the error message. A function
 // may hold multiple arguments used for more than one verb in the error
-// message. Multiple arguments are passed to any function as struct, e.g.,
+// message. Multiple arguments are passed to a function as a pointer to 
+// a struct, e.g.,
 //
 //     err := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "test1", Y: "test2"})
 //
