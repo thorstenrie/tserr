@@ -24,8 +24,7 @@
 //
 //     {"error":{"id":6,"code":500,"message":"test1 does not equal test2"}}
 //
-// Copyright (c) 2022 thorstenrie
-//
+// Copyright (c) 2022 thorstenrie.
 // All Rights Reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package tserr
