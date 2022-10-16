@@ -9,4 +9,5 @@ var (
 	errmsgEmpty           = errmsg{5, 400, "%v cannot be empty"}
 	errmsgNotEqualStr     = errmsg{6, 500, "%v does not equal %v"}
 	errmsgTypeNotMatching = errmsg{7, 405, "%v does not match type %v"}
+	errmsgForbidden       = errmsg{8, 403, "operation on %v forbidden"}
 )

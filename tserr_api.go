@@ -116,3 +116,9 @@ func NotEqualStr(a *NotEqualStrArgs) error {
 	}
 	return errorf(&errmsgNotEqualStr, a.X, a.Y)
 }
+
+// Forbidden can be used if an operation on an object is forbidden
+// Argument f is the name of the forbidden object, e.g., directory or filename
+func Forbidden(f string) error {
+	return errorf(&errmsgForbidden, f)
+}
