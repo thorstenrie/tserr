@@ -55,7 +55,7 @@ The output of `fmt.Println(err3)` is
 {"error":{"id":6,"code":500,"message":"a does not equal b"}}
 ```
 
-All error functions with multiple arguments first check, if the pointer to the argument struct is nil. If it is nil, the error function returns NilPtr. If the argument struct contains a field of type error, is is checked next. If the error field is nil, then the error function returns nil. Otherwise, it returns the corresponding error message.
+All error functions with multiple arguments first check, if the pointer to the argument struct is nil. If it is nil, the error function returns NilPtr. If the argument struct contains a field of type error, it is checked next. If the error field is nil, then the error function returns nil. Otherwise, it returns the corresponding error message.
 
 ## JSON format
 

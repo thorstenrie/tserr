@@ -25,7 +25,7 @@ package tserr
 //
 //     return errorf(&errmsgNotEqualStr, a.X, a.Y)
 
-// CheckArgs holds the required arguments for error function Check
+// CheckArgs holds the required arguments for the error function Check
 type CheckArgs struct {
 	// F is the name of the object causing the failed check, e.g., a filename
 	F string
@@ -44,7 +44,7 @@ func Check(a *CheckArgs) error {
 	return errorf(&errmsgCheck, a.F, a.Err)
 }
 
-// OpArgs holds the required arguments for error function Op
+// OpArgs holds the required arguments for the error function Op
 type OpArgs struct {
 	// Op is the name of the failed operation, e.g., WriteStr
 	Op string
@@ -65,7 +65,7 @@ func Op(a *OpArgs) error {
 	return errorf(&errmsgOp, a.Op, a.Fn, a.Err)
 }
 
-// TypeNotMatchingArgs holds the required arguments for error function TypeNotMatching
+// TypeNotMatchingArgs holds the required arguments for the error function TypeNotMatching
 type TypeNotMatchingArgs struct {
 	// Act is the name of the actual type of the object, e.g., file
 	Act string
@@ -100,7 +100,7 @@ func Empty(f string) error {
 	return errorf(&errmsgEmpty, f)
 }
 
-// NotEqualStrArgs holds the required arguments for error function NotEqualStr
+// NotEqualStrArgs holds the required arguments for the error function NotEqualStr
 type NotEqualStrArgs struct {
 	// X is the string not matching Y
 	X string
@@ -108,13 +108,32 @@ type NotEqualStrArgs struct {
 	Y string
 }
 
-// NotEqualStr can be used if to strings are not equal, but expected to be equal.
+// NotEqualStr can be used if two strings are not equal, but expected to be equal.
 // A default use case are Test functions.
 func NotEqualStr(a *NotEqualStrArgs) error {
 	if a == nil {
 		return NilPtr()
 	}
 	return errorf(&errmsgNotEqualStr, a.X, a.Y)
+}
+
+// ReturnArgs holds the required arguments for the error function Return
+type ReturnArgs struct {
+	// Op is the operation
+	Op     string
+	// Actual is the actual return value returned by Op
+	Actual string
+	// Want is the expected return value from Op
+	Want   string
+}
+
+// Return can be used if an operation returns an actual value, but another return value
+// is expected. A default use case are Test functions.
+func Return(a *ReturnArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgReturn, a.Op, a.Actual, a.Want)
 }
 
 // Forbidden can be used if an operation on an object is forbidden

@@ -10,4 +10,5 @@ var (
 	errmsgNotEqualStr     = errmsg{6, 500, "%v does not equal %v"}
 	errmsgTypeNotMatching = errmsg{7, 405, "%v does not match type %v"}
 	errmsgForbidden       = errmsg{8, 403, "operation on %v forbidden"}
+	errmsgReturn          = errmsg{9, 500, "%v returned %v, but %v expected"}
 )

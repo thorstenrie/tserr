@@ -154,6 +154,37 @@ func TestTypeNotMatching(t *testing.T) {
 	testEqualJson(t, err, &emsg)
 }
 
+func TestReturnNil(t *testing.T) {
+	if err := Return(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestReturn(t *testing.T) {
+	a := ReturnArgs{
+		Op:     strFoo,
+		Actual: strFoo,
+		Want:   strFoo + strFoo,
+	}
+	em := &errmsgReturn
+	err := Return(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.Op,
+			a.Actual,
+			a.Want,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
 func TestNotEqualStrNil(t *testing.T) {
 	if err := NotEqualStr(nil); err == nil {
 		t.Errorf(errNil)
