@@ -144,7 +144,9 @@ func Forbidden(f string) error {
 
 // HigherArgs holds the required arguments for the error function Higher
 type HigherArgs struct {
-	// Actual is the actual integer
+	// Var is the name of the variable
+	Var string
+	// Actual is the actual value of Var
 	Actual int64
 	// LowerBound is the lower bound. Actual is expected to be equal or higher than LowerBound.
 	LowerBound int64
@@ -156,5 +158,23 @@ func Higher(a *HigherArgs) error {
 	if a == nil {
 		return NilPtr()
 	}
-	return errorf(&errmsgHigher, a.Actual, a.LowerBound)
+	return errorf(&errmsgHigher, a.Var, a.Actual, a.LowerBound)
+}
+
+// EqualArgs holds the required arguments for the error function Higher
+type EqualArgs struct {
+	// Var is the name of the variable
+	Var string
+	// Actual is the actual value of Var
+	Actual int64
+	// Want is the expected value of Var.
+	Want int64
+}
+
+// Equal can be used if an integer fails to be equal to an expected value.
+func Equal(a *EqualArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgEqual, a.Var, a.Actual, a.Want)
 }

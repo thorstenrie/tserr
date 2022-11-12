@@ -194,6 +194,7 @@ func TestHigherNil(t *testing.T) {
 
 func TestHigher(t *testing.T) {
 	a := HigherArgs{
+		Var:        strFoo,
 		Actual:     intFoo - 1,
 		LowerBound: intFoo,
 	}
@@ -208,8 +209,40 @@ func TestHigher(t *testing.T) {
 		em.C,
 		fmt.Sprintf("%v", fmt.Errorf(
 			em.M,
+			a.Var,
 			a.Actual,
 			a.LowerBound,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
+func TestEqualNil(t *testing.T) {
+	if err := Equal(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestEqual(t *testing.T) {
+	a := EqualArgs{
+		Var:    strFoo,
+		Actual: intFoo - 1,
+		Want:   intFoo,
+	}
+	em := &errmsgEqual
+	err := Equal(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.Var,
+			a.Actual,
+			a.Want,
 		)),
 	}
 	testEqualJson(t, err, &emsg)
