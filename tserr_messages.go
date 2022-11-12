@@ -11,4 +11,5 @@ var (
 	errmsgTypeNotMatching = errmsg{7, 405, "%v does not match type %v"}
 	errmsgForbidden       = errmsg{8, 403, "operation on %v forbidden"}
 	errmsgReturn          = errmsg{9, 500, "%v returned %v, but %v expected"}
+	errmsgHigher          = errmsg{10, 400, "value %d expected to be at least equal or higher than %d"}
 )

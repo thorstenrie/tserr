@@ -25,6 +25,7 @@ import (
 var (
 	strFoo string = "tserr_foo"        // testcase type string
 	errFoo error  = fmt.Errorf(strFoo) // testcase type error
+	intFoo int64  = 1234               // testcase type int64
 )
 
 // TestCheckNil tests if an error is returned by Check in case
@@ -180,6 +181,35 @@ func TestReturn(t *testing.T) {
 			a.Op,
 			a.Actual,
 			a.Want,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
+func TestHigherNil(t *testing.T) {
+	if err := Higher(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestHigher(t *testing.T) {
+	a := HigherArgs{
+		Actual:     intFoo - 1,
+		LowerBound: intFoo,
+	}
+	em := &errmsgHigher
+	err := Higher(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.Actual,
+			a.LowerBound,
 		)),
 	}
 	testEqualJson(t, err, &emsg)

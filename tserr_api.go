@@ -120,11 +120,11 @@ func NotEqualStr(a *NotEqualStrArgs) error {
 // ReturnArgs holds the required arguments for the error function Return
 type ReturnArgs struct {
 	// Op is the operation
-	Op     string
+	Op string
 	// Actual is the actual return value returned by Op
 	Actual string
 	// Want is the expected return value from Op
-	Want   string
+	Want string
 }
 
 // Return can be used if an operation returns an actual value, but another return value
@@ -140,4 +140,21 @@ func Return(a *ReturnArgs) error {
 // Argument f is the name of the forbidden object, e.g., directory or filename
 func Forbidden(f string) error {
 	return errorf(&errmsgForbidden, f)
+}
+
+// HigherArgs holds the required arguments for the error function Higher
+type HigherArgs struct {
+	// Actual is the actual integer
+	Actual int64
+	// LowerBound is the lower bound. Actual is expected to be equal or higher than LowerBound.
+	LowerBound int64
+}
+
+// Higher can be used if an integer fails to at least be equal or be higher than a defined
+// lower bound.
+func Higher(a *HigherArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgHigher, a.Actual, a.LowerBound)
 }
