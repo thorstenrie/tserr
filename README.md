@@ -3,7 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/thorstenrie/tserr)](https://goreportcard.com/report/github.com/thorstenrie/tserr)
 [![PkgGoDev](https://pkg.go.dev/badge/mod/github.com/thorstenrie/tserr)](https://pkg.go.dev/mod/github.com/thorstenrie/tserr)
 
-The package tserr is a simple error interface in [Go](https://go.dev/). The interface provides standardized error messages of type `error` by function calls. Errors might contain verbs, which are provided by the function arguments.
+The package tserr is a simple error interface in [Go](https://go.dev/). The interface provides standardized error messages of type `error` by function calls. Errors may contain verbs, which are provided by the function arguments.
 
 - **Simple**: Without configuration, just function calls
 - **Easy to parse**: All error messages in JSON format.
@@ -59,7 +59,7 @@ All error functions with multiple arguments first check, if the pointer to the a
 
 ## JSON format
 
-The error messages are fomatted in the JSON format. The root element is named "error". "id" is a consecutively numbered id. "code" is a relating HTTP status code. "message" contains the actual pre-defined error message.
+The error messages are fomatted in the JSON format. The root element is named "error". Each error message has an "id" which is consecutively numbered. "code" is a relating HTTP status code. "message" contains the actual pre-defined error message.
 
 ```
 {"error":{"id":<int>,"code":<int>,"message":"<string>"}}
