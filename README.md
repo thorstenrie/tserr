@@ -20,7 +20,7 @@ The package tserr is a simple error interface in [Go](https://go.dev/). The inte
 - **Simple**: Without configuration, just function calls
 - **Easy to parse**: All error messages in JSON format.
 - **Tested**: Unit tests with high [code coverage](https://gocover.io/github.com/thorstenrie/tserr)
-- **Dependencies**: Only depends on [Go Standard Library](https://pkg.go.dev/std)
+- **Dependencies**: Only depends on the [Go Standard Library](https://pkg.go.dev/std)
 
 ## Usage
 
