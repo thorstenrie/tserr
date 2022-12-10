@@ -94,6 +94,12 @@ func NotExistent(f string) error {
 	return errorf(&errmsgNotExistent, f)
 }
 
+// NotSet can be used if an required object is not set, e.g., an environment variable.
+// Argument f is the name of the object, e.g., the name of the environment variable
+func NotSet(f string) error {
+	return errorf(&errmsgNotSet, f)
+}
+
 // Empty can be used if an required object is empty but not allowed to be empty, e.g., an input argument of type string.
 // Argument f is the name of the empty object, e.g., filename
 func Empty(f string) error {

@@ -13,4 +13,5 @@ var (
 	errmsgReturn          = errmsg{9, 500, "%v returned %v, but %v expected"}
 	errmsgHigher          = errmsg{10, 400, "value of %v is %d, but expected to be at least equal to or higher than %d"}
 	errmsgEqual           = errmsg{11, 400, "value of %v is %d, but expected to be equal to %d"}
+	errmsgNotSet          = errmsg{12, 404, "%v not set"}
 )
