@@ -47,6 +47,10 @@ func TestNil(t *testing.T) {
 // testValidJson tests if the error messag eis in valid JSON format
 // and returns an error if not
 func testValidJson(t *testing.T, e error) {
+	// Panic if t is nil
+	if t == nil {
+		panic("nil pointer")
+	}
 	// convert error to []byte type and check for valid JSON format using
 	// the encoding/json standard library package
 	if !json.Valid([]byte(fmt.Sprintf("%v", e))) {
@@ -60,6 +64,10 @@ func testValidJson(t *testing.T, e error) {
 // encoding/json standard library package. It returns an error if the expected
 // error message does not equal the actual error message
 func testEqualJson(t *testing.T, e error, emsg *errmsg) {
+	// Panic if t is nil
+	if t == nil {
+		panic("nil pointer")
+	}
 	// if pointer emsg is nil then test fails immediately
 	if emsg == nil {
 		t.Fatal("nil pointer")
