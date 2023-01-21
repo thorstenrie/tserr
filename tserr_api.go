@@ -152,6 +152,12 @@ func Forbidden(f string) error {
 	return errorf(&errmsgForbidden, f)
 }
 
+// NotAvailable can be used if an operation or an object is not available
+// Argument f is the name of the operation or object not available, e.g., a service with name f
+func NotAvailable(f string) error {
+	return errorf(&errmsgNotAvailable, f)
+}
+
 // HigherArgs holds the required arguments for the error function Higher
 type HigherArgs struct {
 	// Var is the name of the variable
