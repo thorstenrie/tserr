@@ -14,6 +14,10 @@ package tserr
 //
 // The structure of all test functions follows the same pattern. For an example, please see
 // tests for Check: TestCheck, TestCheckNil, TestCheckNilErr
+//
+// Copyright (c) 2023 thorstenrie.
+// All Rights Reserved. Use is governed with GNU Affero General Public License v3.0
+// that can be found in the LICENSE file.
 
 // Import standard library packages
 import (

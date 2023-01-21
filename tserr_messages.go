@@ -1,3 +1,6 @@
+// Copyright (c) 2023 thorstenrie.
+// All Rights Reserved. Use is governed with GNU Affero General Public License v3.0
+// that can be found in the LICENSE file.
 package tserr
 
 // Error ids, error codes and error messages with their potential verbs.

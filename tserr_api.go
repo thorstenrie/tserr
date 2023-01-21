@@ -24,6 +24,10 @@ package tserr
 // Otherwise, it returns the corresponding error message, e.g.,
 //
 //     return errorf(&errmsgNotEqualStr, a.X, a.Y)
+//
+// Copyright (c) 2023 thorstenrie.
+// All Rights Reserved. Use is governed with GNU Affero General Public License v3.0
+// that can be found in the LICENSE file.
 
 // CheckArgs holds the required arguments for the error function Check
 type CheckArgs struct {
