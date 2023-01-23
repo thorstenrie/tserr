@@ -92,6 +92,42 @@ func TestCheck(t *testing.T) {
 	testEqualJson(t, err, &emsg)
 }
 
+func TestNotAvailableNil(t *testing.T) {
+	if err := NotAvailable(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestNotAvailableNilErr(t *testing.T) {
+	a := NotAvailableArgs{Err: nil}
+	if err := NotAvailable(&a); err != nil {
+		t.Errorf(errNNil)
+	}
+}
+
+func TestNotAvailable(t *testing.T) {
+	a := NotAvailableArgs{
+		S:   strFoo,
+		Err: errFoo,
+	}
+	em := &errmsgNotAvailable
+	err := NotAvailable(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.S,
+			a.Err,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
 func TestOpNil(t *testing.T) {
 	if err := Op(nil); err == nil {
 		t.Errorf(errNil)
@@ -361,25 +397,6 @@ func TestForbidden(t *testing.T) {
 	a := strFoo
 	em := &errmsgForbidden
 	err := Forbidden(a)
-	if err == nil {
-		t.Fatal(errNil)
-	}
-	testValidJson(t, err)
-	emsg := errmsg{
-		em.Id,
-		em.C,
-		fmt.Sprintf("%v", fmt.Errorf(
-			em.M,
-			a,
-		)),
-	}
-	testEqualJson(t, err, &emsg)
-}
-
-func TestNotAvailable(t *testing.T) {
-	a := strFoo
-	em := &errmsgNotAvailable
-	err := NotAvailable(a)
 	if err == nil {
 		t.Fatal(errNil)
 	}

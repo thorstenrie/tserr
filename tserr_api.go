@@ -48,6 +48,25 @@ func Check(a *CheckArgs) error {
 	return errorf(&errmsgCheck, a.F, a.Err)
 }
 
+// NotAvailableArgs holds the required arguments for the error function NotAvailable
+type NotAvailableArgs struct {
+	// S is the name of the service not available
+	S string
+	// Err is the error provided by the service
+	Err error
+}
+
+// NotAvailable can be used if an service is not available
+func NotAvailable(a *NotAvailableArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	if a.Err == nil {
+		return nil
+	}
+	return errorf(&errmsgNotAvailable, a.S, a.Err)
+}
+
 // OpArgs holds the required arguments for the error function Op
 type OpArgs struct {
 	// Op is the name of the failed operation, e.g., WriteStr
@@ -150,12 +169,6 @@ func Return(a *ReturnArgs) error {
 // Argument f is the name of the forbidden object, e.g., directory or filename
 func Forbidden(f string) error {
 	return errorf(&errmsgForbidden, f)
-}
-
-// NotAvailable can be used if an operation or an object is not available
-// Argument f is the name of the operation or object not available, e.g., a service with name f
-func NotAvailable(f string) error {
-	return errorf(&errmsgNotAvailable, f)
 }
 
 // HigherArgs holds the required arguments for the error function Higher
