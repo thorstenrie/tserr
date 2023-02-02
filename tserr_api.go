@@ -196,7 +196,7 @@ type EqualArgs struct {
 	Var string
 	// Actual is the actual value of Var
 	Actual int64
-	// Want is the expected value of Var.
+	// Want is the expected value of Var
 	Want int64
 }
 
@@ -206,4 +206,22 @@ func Equal(a *EqualArgs) error {
 		return NilPtr()
 	}
 	return errorf(&errmsgEqual, a.Var, a.Actual, a.Want)
+}
+
+// EqualfArgs holds the required arguments for the error function Higher
+type EqualfArgs struct {
+	// Var is the name of the variable
+	Var string
+	// Actual is the actual value of Var
+	Actual float64
+	// Want is the expected value of Var
+	Want float64
+}
+
+// Equalf can be used if an integer fails to be equal to an expected value.
+func Equalf(a *EqualfArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgEqualf, a.Var, a.Actual, a.Want)
 }

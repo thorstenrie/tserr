@@ -10,7 +10,7 @@ var (
 	errmsgOp              = errmsg{3, 422, "%v %v failed: %w"}
 	errmsgNilFailed       = errmsg{4, 500, "%v returned nil, but error expected"}
 	errmsgEmpty           = errmsg{5, 400, "%v cannot be empty"}
-	errmsgNotEqualStr     = errmsg{6, 500, "%v does not equal %v"}
+	errmsgNotEqualStr     = errmsg{6, 400, "%v does not equal %v"}
 	errmsgTypeNotMatching = errmsg{7, 405, "%v does not match type %v"}
 	errmsgForbidden       = errmsg{8, 403, "operation on %v forbidden"}
 	errmsgReturn          = errmsg{9, 500, "%v returned %v, but %v expected"}
@@ -18,4 +18,5 @@ var (
 	errmsgEqual           = errmsg{11, 400, "value of %v is %d, but expected to be equal to %d"}
 	errmsgNotSet          = errmsg{12, 404, "%v not set"}
 	errmsgNotAvailable    = errmsg{13, 501, "%v not available: %w"}
+	errmsgEqualf          = errmsg{14, 400, "value of %v is %f, but expected to be equal to %f"}
 )

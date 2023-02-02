@@ -27,9 +27,10 @@ import (
 
 // testcases for types string and error
 var (
-	strFoo string = "tserr_foo"        // testcase type string
-	errFoo error  = fmt.Errorf(strFoo) // testcase type error
-	intFoo int64  = 1234               // testcase type int64
+	strFoo   string  = "tserr_foo"        // testcase type string
+	errFoo   error   = fmt.Errorf(strFoo) // testcase type error
+	intFoo   int64   = 1234               // testcase type int64
+	floatFoo float64 = 1234               // testcase type float64
 )
 
 // TestCheckNil tests if an error is returned by Check in case
@@ -271,6 +272,37 @@ func TestEqual(t *testing.T) {
 	}
 	em := &errmsgEqual
 	err := Equal(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.Var,
+			a.Actual,
+			a.Want,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
+func TestEqualfNil(t *testing.T) {
+	if err := Equalf(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestEqualf(t *testing.T) {
+	a := EqualfArgs{
+		Var:    strFoo,
+		Actual: floatFoo - float64(1),
+		Want:   floatFoo,
+	}
+	em := &errmsgEqualf
+	err := Equalf(&a)
 	if err == nil {
 		t.Fatal(errNil)
 	}
