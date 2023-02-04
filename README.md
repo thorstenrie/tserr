@@ -101,6 +101,15 @@ func main() {
 }
 ```
 
+[Run in Go Playground](https://go.dev/play/p/L5u1D2Iy_M5)
+
+Output:
+```
+{"error":{"id":0,"code":500,"message":"nil pointer"}}
+{"error":{"id":2,"code":404,"message":"foo.txt does not exist"}}
+{"error":{"id":6,"code":400,"message":"a does not equal b"}}
+```
+
 ## Links
 
 [Godoc](https://pkg.go.dev/github.com/thorstenrie/tserr)
