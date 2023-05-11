@@ -425,6 +425,25 @@ func TestEmpty(t *testing.T) {
 	testEqualJson(t, err, &emsg)
 }
 
+func TestNonPrintable(t *testing.T) {
+	a := strFoo
+	em := &errmsgNonPrintable
+	err := NonPrintable(a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
 func TestForbidden(t *testing.T) {
 	a := strFoo
 	em := &errmsgForbidden

@@ -22,4 +22,5 @@ var (
 	errmsgNotSet          = errmsg{12, http.StatusNotFound, "%v not set"}
 	errmsgNotAvailable    = errmsg{13, http.StatusServiceUnavailable, "%v not available: %w"}
 	errmsgEqualf          = errmsg{14, http.StatusInternalServerError, "value of %v is %f, but expected to be equal to %f"}
+	errmsgNonPrintable    = errmsg{15, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed."}
 )

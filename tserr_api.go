@@ -129,6 +129,12 @@ func Empty(f string) error {
 	return errorf(&errmsgEmpty, f)
 }
 
+// NonPrintable can be used if a string f is allowed to only contain printable runes, but actually
+// contains non-printable runes.
+func NonPrintable(f string) error {
+	return errorf(&errmsgNonPrintable, f)
+}
+
 // NotEqualStrArgs holds the required arguments for the error function NotEqualStr
 type NotEqualStrArgs struct {
 	// X is the string not matching Y
