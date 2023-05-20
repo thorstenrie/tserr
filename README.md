@@ -114,8 +114,6 @@ Output:
 
 [Godoc](https://pkg.go.dev/github.com/thorstenrie/tserr)
 
-[Gocover.io](https://gocover.io/github.com/thorstenrie/tserr)
-
 [Go Report Card](https://goreportcard.com/report/github.com/thorstenrie/tserr)
 
 [Open Source Insights](https://deps.dev/go/github.com%2Fthorstenrie%2Ftserr)

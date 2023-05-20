@@ -258,6 +258,37 @@ func TestHigher(t *testing.T) {
 	testEqualJson(t, err, &emsg)
 }
 
+func TestLowerNil(t *testing.T) {
+	if err := Lower(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestLower(t *testing.T) {
+	a := LowerArgs{
+		Var:         strFoo,
+		Actual:      intFoo,
+		HigherBound: intFoo,
+	}
+	em := &errmsgLower
+	err := Lower(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.Var,
+			a.Actual,
+			a.HigherBound,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
 func TestEqualNil(t *testing.T) {
 	if err := Equal(nil); err == nil {
 		t.Errorf(errNil)

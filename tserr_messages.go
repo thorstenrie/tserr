@@ -19,8 +19,9 @@ var (
 	errmsgReturn          = errmsg{9, http.StatusInternalServerError, "%v returned %v, but %v expected"}
 	errmsgHigher          = errmsg{10, http.StatusInternalServerError, "value of %v is %d, but expected to be at least equal to or higher than %d"}
 	errmsgEqual           = errmsg{11, http.StatusInternalServerError, "value of %v is %d, but expected to be equal to %d"}
-	errmsgNotSet          = errmsg{12, http.StatusNotFound, "%v not set"}
-	errmsgNotAvailable    = errmsg{13, http.StatusServiceUnavailable, "%v not available: %w"}
-	errmsgEqualf          = errmsg{14, http.StatusInternalServerError, "value of %v is %f, but expected to be equal to %f"}
-	errmsgNonPrintable    = errmsg{15, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed."}
+	errmsgLower           = errmsg{12, http.StatusInternalServerError, "value of %v is %d, but expected to be lower than %d"}
+	errmsgNotSet          = errmsg{13, http.StatusNotFound, "%v not set"}
+	errmsgNotAvailable    = errmsg{14, http.StatusServiceUnavailable, "%v not available: %w"}
+	errmsgEqualf          = errmsg{15, http.StatusInternalServerError, "value of %v is %f, but expected to be equal to %f"}
+	errmsgNonPrintable    = errmsg{16, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed."}
 )

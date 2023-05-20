@@ -196,7 +196,26 @@ func Higher(a *HigherArgs) error {
 	return errorf(&errmsgHigher, a.Var, a.Actual, a.LowerBound)
 }
 
-// EqualArgs holds the required arguments for the error function Higher
+// LowerArgs holds the required arguments for the error function Lower
+type LowerArgs struct {
+	// Var is the name of the variable
+	Var string
+	// Actual is the actual value of Var
+	Actual int64
+	// HigherBound is the higher bound. Actual is expected to be lower than HigherBound.
+	HigherBound int64
+}
+
+// Lower can be used if an integer fails to be lower than a defined
+// higher bound.
+func Lower(a *LowerArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgLower, a.Var, a.Actual, a.HigherBound)
+}
+
+// EqualArgs holds the required arguments for the error function Equal
 type EqualArgs struct {
 	// Var is the name of the variable
 	Var string
@@ -214,7 +233,8 @@ func Equal(a *EqualArgs) error {
 	return errorf(&errmsgEqual, a.Var, a.Actual, a.Want)
 }
 
-// EqualfArgs holds the required arguments for the error function Higher
+// EqualfArgs holds the required arguments for the error function func Equalf(a *EqualfArgs) error {
+
 type EqualfArgs struct {
 	// Var is the name of the variable
 	Var string
