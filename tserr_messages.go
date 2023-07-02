@@ -13,7 +13,7 @@ var (
 	errmsgOp              = errmsg{3, http.StatusUnprocessableEntity, "%v %v failed: %w"}
 	errmsgNilFailed       = errmsg{4, http.StatusInternalServerError, "%v returned nil, but error expected"}
 	errmsgEmpty           = errmsg{5, http.StatusBadRequest, "%v cannot be empty"}
-	errmsgNotEqualStr     = errmsg{6, http.StatusInternalServerError, "%v does not equal %v"}
+	errmsgEqualStr        = errmsg{6, http.StatusInternalServerError, "value of %v is %v, but expected to be equal to %v"}
 	errmsgTypeNotMatching = errmsg{7, http.StatusMethodNotAllowed, "%v does not match type %v"}
 	errmsgForbidden       = errmsg{8, http.StatusForbidden, "operation on %v forbidden"}
 	errmsgReturn          = errmsg{9, http.StatusInternalServerError, "%v returned %v, but %v expected"}
@@ -24,4 +24,5 @@ var (
 	errmsgNotAvailable    = errmsg{14, http.StatusServiceUnavailable, "%v not available: %w"}
 	errmsgEqualf          = errmsg{15, http.StatusInternalServerError, "value of %v is %f, but expected to be equal to %f"}
 	errmsgNonPrintable    = errmsg{16, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed."}
+	errmsgNotEqual        = errmsg{17, http.StatusInternalServerError, "variable %v equals variable %v, but not allowed to equal"}
 )

@@ -88,6 +88,22 @@ func Op(a *OpArgs) error {
 	return errorf(&errmsgOp, a.Op, a.Fn, a.Err)
 }
 
+// NotEqualArgs holds the required arguments for the error function NotEqual
+type NotEqualArgs struct {
+	// Name of the variable equal to Y
+	X string
+	// Name of the variable equal to X
+	Y string
+}
+
+// NotEqual can be used if the type of an object does not match the expected type
+func NotEqual(a *NotEqualArgs) error {
+	if a == nil {
+		return NilPtr()
+	}
+	return errorf(&errmsgNotEqual, a.X, a.Y)
+}
+
 // TypeNotMatchingArgs holds the required arguments for the error function TypeNotMatching
 type TypeNotMatchingArgs struct {
 	// Act is the name of the actual type of the object, e.g., file
@@ -136,20 +152,22 @@ func NonPrintable(f string) error {
 }
 
 // NotEqualStrArgs holds the required arguments for the error function NotEqualStr
-type NotEqualStrArgs struct {
-	// X is the string not matching Y
-	X string
-	// Y is the string not matching X
-	Y string
+type EqualStrArgs struct {
+	// Var is the name of the variable
+	Var string
+	// Actual is the actual value of Var
+	Actual string
+	// Want is the expected value of Var
+	Want string
 }
 
-// NotEqualStr can be used if two strings are not equal, but expected to be equal.
+// EqualStr can be used if a string fails to be equal to an expected string.
 // A default use case are Test functions.
-func NotEqualStr(a *NotEqualStrArgs) error {
+func EqualStr(a *EqualStrArgs) error {
 	if a == nil {
 		return NilPtr()
 	}
-	return errorf(&errmsgNotEqualStr, a.X, a.Y)
+	return errorf(&errmsgEqualStr, a.Var, a.Actual, a.Want)
 }
 
 // ReturnArgs holds the required arguments for the error function Return

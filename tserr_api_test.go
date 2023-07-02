@@ -167,6 +167,35 @@ func TestOp(t *testing.T) {
 	testEqualJson(t, err, &emsg)
 }
 
+func TestNotEqualNil(t *testing.T) {
+	if err := NotEqual(nil); err == nil {
+		t.Errorf(errNil)
+	}
+}
+
+func TestNotEqual(t *testing.T) {
+	a := NotEqualArgs{
+		X: strFoo,
+		Y: strFoo + strFoo,
+	}
+	em := &errmsgNotEqual
+	err := NotEqual(&a)
+	if err == nil {
+		t.Fatal(errNil)
+	}
+	testValidJson(t, err)
+	emsg := errmsg{
+		em.Id,
+		em.C,
+		fmt.Sprintf("%v", fmt.Errorf(
+			em.M,
+			a.X,
+			a.Y,
+		)),
+	}
+	testEqualJson(t, err, &emsg)
+}
+
 func TestTypeNotMatchingNil(t *testing.T) {
 	if err := TypeNotMatching(nil); err == nil {
 		t.Errorf(errNil)
@@ -351,19 +380,20 @@ func TestEqualf(t *testing.T) {
 	testEqualJson(t, err, &emsg)
 }
 
-func TestNotEqualStrNil(t *testing.T) {
-	if err := NotEqualStr(nil); err == nil {
+func TestEqualStrNil(t *testing.T) {
+	if err := EqualStr(nil); err == nil {
 		t.Errorf(errNil)
 	}
 }
 
-func TestNotEqualStr(t *testing.T) {
-	a := NotEqualStrArgs{
-		X: strFoo,
-		Y: strFoo + strFoo,
+func TestEqualStr(t *testing.T) {
+	a := EqualStrArgs{
+		Var:    strFoo,
+		Actual: strFoo,
+		Want:   strFoo + strFoo,
 	}
-	em := &errmsgNotEqualStr
-	err := NotEqualStr(&a)
+	em := &errmsgEqualStr
+	err := EqualStr(&a)
 	if err == nil {
 		t.Fatal(errNil)
 	}
@@ -373,8 +403,9 @@ func TestNotEqualStr(t *testing.T) {
 		em.C,
 		fmt.Sprintf("%v", fmt.Errorf(
 			em.M,
-			a.X,
-			a.Y,
+			a.Var,
+			a.Actual,
+			a.Want,
 		)),
 	}
 	testEqualJson(t, err, &emsg)
