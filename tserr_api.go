@@ -5,7 +5,7 @@ package tserr
 // function argument. If the function has more than one argument, then the arguments are
 // provided as a struct, e.g.,
 //
-//     err := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "test1", Y: "test2"})
+//     err := tserr.EqualStr(&tserr.EqualStrArgs{X: "test1", Y: "test2"})
 //
 // All error functions first check, if the pointer to the argument struct is nil. If it is
 // nil, the error function returns NilPtr, e.g.,
@@ -23,7 +23,7 @@ package tserr
 //
 // Otherwise, it returns the corresponding error message, e.g.,
 //
-//     return errorf(&errmsgNotEqualStr, a.X, a.Y)
+//     return errorf(&errmsgEqualStr, a.X, a.Y)
 //
 // Copyright (c) 2023 thorstenrie.
 // All Rights Reserved. Use is governed with GNU Affero General Public License v3.0

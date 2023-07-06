@@ -18,7 +18,7 @@
 // message. Multiple arguments are passed to a function as a pointer to
 // a struct, e.g.,
 //
-//	err := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "test1", Y: "test2"})
+//	err := tserr.EqualStr(&tserr.EqualStrArgs{X: "test1", Y: "test2"})
 //
 // Output with fmt.Println(err):
 //

@@ -58,7 +58,7 @@ The output of `fmt.Println(err2)` is
 A function may hold multiple arguments used for more than one verb in the error message. Multiple arguments are passed to a function as a pointer to a struct, e.g.,
 
 ```
-err3 := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "a", Y: "b"})
+err3 := tserr.EqualStr(&tserr.EqualStrArgs{X: "a", Y: "b"})
 ```
 
 The output of `fmt.Println(err3)` is
@@ -96,7 +96,7 @@ func main() {
 	err2 := tserr.NotExistent(f)
 	fmt.Println(err2)
 
-	err3 := tserr.NotEqualStr(&tserr.NotEqualStrArgs{X: "a", Y: "b"})
+	err3 := tserr.EqualStr(&tserr.EqualStrArgs{X: "a", Y: "b"})
 	fmt.Println(err3)
 }
 ```
