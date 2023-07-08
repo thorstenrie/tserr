@@ -96,7 +96,7 @@ type NotEqualArgs struct {
 	Y string
 }
 
-// NotEqual can be used if the type of an object does not match the expected type
+// NotEqual can be used if two variables are equal but not expected to be equal
 func NotEqual(a *NotEqualArgs) error {
 	if a == nil {
 		return NilPtr()
