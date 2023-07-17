@@ -19,20 +19,20 @@ The package tserr is a simple error interface in [Go](https://go.dev/). The inte
 
 - **Simple**: Without configuration, just function calls
 - **Easy to parse**: All error messages in JSON format.
-- **Tested**: Unit tests with high [code coverage](https://gocover.io/github.com/thorstenrie/tserr)
+- **Tested**: Unit tests with high code coverage
 - **Dependencies**: Only depends on the [Go Standard Library](https://pkg.go.dev/std)
 
 ## Usage
 
 In the Go app, the package is imported with
 
-```
+```go
 import "github.com/thorstenrie/tserr"
 ```
 
 An error is called by a specific, corresponding function call, e.g., 
 
-```
+```go
 err1 := tserr.NilPtr()
 ```
 
@@ -44,7 +44,7 @@ The output of `fmt.Println(err1)` is
 
 The error message may contain verbs to be filled by arguments, e.g., with one argument:
 
-```
+```go
 f := "foo.txt"
 err2 := tserr.NotExistent(f)
 ```
@@ -57,7 +57,7 @@ The output of `fmt.Println(err2)` is
 
 A function may hold multiple arguments used for more than one verb in the error message. Multiple arguments are passed to a function as a pointer to a struct, e.g.,
 
-```
+```go
 err3 := tserr.EqualStr(&tserr.EqualStrArgs{X: "a", Y: "b"})
 ```
 
@@ -79,7 +79,7 @@ The error messages are fomatted in the JSON format. The root element is named "e
 
 ## Example
 
-```
+```go
 package main
 
 import (
