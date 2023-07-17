@@ -20,9 +20,10 @@ var (
 	errmsgHigher          = errmsg{10, http.StatusInternalServerError, "value of %v is %d, but expected to be at least equal to or higher than %d"}
 	errmsgEqual           = errmsg{11, http.StatusInternalServerError, "value of %v is %d, but expected to be equal to %d"}
 	errmsgLower           = errmsg{12, http.StatusInternalServerError, "value of %v is %d, but expected to be lower than %d"}
-	errmsgNotSet          = errmsg{13, http.StatusNotFound, "%v not set"}
-	errmsgNotAvailable    = errmsg{14, http.StatusServiceUnavailable, "%v not available: %w"}
-	errmsgEqualf          = errmsg{15, http.StatusInternalServerError, "value of %v is %f, but expected to be equal to %f"}
-	errmsgNonPrintable    = errmsg{16, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed."}
-	errmsgNotEqual        = errmsg{17, http.StatusInternalServerError, "variable %v equals variable %v, but not allowed to equal"}
+	errmsgNotSet          = errmsg{14, http.StatusNotFound, "%v not set"}
+	errmsgNotAvailable    = errmsg{15, http.StatusServiceUnavailable, "%v not available: %w"}
+	errmsgEqualf          = errmsg{16, http.StatusInternalServerError, "value of %v is %f, but expected to be equal to %f"}
+	errmsgNonPrintable    = errmsg{17, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed"}
+	errmsgNotEqual        = errmsg{18, http.StatusInternalServerError, "variable %v equals variable %v, but not allowed to equal"}
+	errmsgDuplicate       = errmsg{19, http.StatusForbidden, "%v is a duplicate and already exists"}
 )

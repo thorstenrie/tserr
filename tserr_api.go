@@ -133,6 +133,12 @@ func NotExistent(f string) error {
 	return errorf(&errmsgNotExistent, f)
 }
 
+// Duplicate can be used if an object alread exists, e.g., a key, but is only allowed to exist once.
+// Argument f is the name of the object, e.g., key name
+func Duplicate(f string) error {
+	return errorf(&errmsgDuplicate, f)
+}
+
 // NotSet can be used if an required object is not set, e.g., an environment variable.
 // Argument f is the name of the object, e.g., the name of the environment variable
 func NotSet(f string) error {
