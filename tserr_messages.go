@@ -26,4 +26,5 @@ var (
 	errmsgNonPrintable    = errmsg{17, http.StatusBadRequest, "%v contains non-printable runes, but only printable runes are allowed"}
 	errmsgNotEqual        = errmsg{18, http.StatusInternalServerError, "variable %v equals variable %v, but not allowed to equal"}
 	errmsgDuplicate       = errmsg{19, http.StatusForbidden, "%v is a duplicate and already exists"}
+	errmsgLocked          = errmsg{20, http.StatusLocked, "%v is locked"}
 )

@@ -139,6 +139,12 @@ func Duplicate(f string) error {
 	return errorf(&errmsgDuplicate, f)
 }
 
+// Locked can be used if a service is locked, e.g., because it is still running.
+// Argument s is the name of the service.
+func Locked(s string) error {
+	return errorf(&errmsgLocked, s)
+}
+
 // NotSet can be used if an required object is not set, e.g., an environment variable.
 // Argument f is the name of the object, e.g., the name of the environment variable
 func NotSet(f string) error {
